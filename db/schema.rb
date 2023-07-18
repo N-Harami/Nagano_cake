@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_18_064548) do
+ActiveRecord::Schema.define(version: 2023_07_18_093748) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "postcode"
-    t.text "address"
-    t.string "name"
+    t.text "address", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "quantity"
+    t.integer "quantity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(version: 2023_07_18_064548) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "payment_methods"
-    t.string "postcode"
-    t.string "address"
-    t.string "name"
+    t.string "postcode", null: false
+    t.string "address", null: false
+    t.string "name", null: false
     t.integer "shippingFee"
     t.integer "billingAmount"
     t.integer "orderStatus"
