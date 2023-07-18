@@ -1,14 +1,5 @@
 Rails.application.routes.draw do
   namespace :public do
-  root to: "homes#top"
-  get 'homes/about' => 'homes#about' ,as: "about"
-end
-
-  namespace :public do
-  resources :items, only: [:index, :show]
-end
-
-  namespace :public do
     get 'orders/new'
     get 'orders/index'
     get 'orders/show'
