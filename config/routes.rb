@@ -9,6 +9,14 @@ Rails.application.routes.draw do
   namespace :public do
     get 'cart_items/index'
   end
+
+  namespace :public do
+    get 'addresses' => 'addresses#index'
+    get 'addresses/edit'
+    post 'addresses' => 'addresses#create'
+  end
+
+
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
