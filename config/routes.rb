@@ -22,13 +22,16 @@ end
     get 'orders/complete'
   end
   namespace :public do
-    get 'cart_items/index'
+    get 'cart_items' => 'cart_items#index'
   end
 
   namespace :public do
-    get 'addresses' => 'addresses#index'
-    get 'addresses/edit'
+    resources :addresses, only: [:index, :edit, :destroy]
+    # get 'addresses' => 'addresses#index'
+    # get 'addresses/edit'
     post 'addresses' => 'addresses#create'
+    # get 'address/:id/edit' => 'addresses#edit', as: 'edit_address'
+    patch 'addresses/:id' => 'addresses#update', as: 'update_address'
   end
   
   namespace :admin do
