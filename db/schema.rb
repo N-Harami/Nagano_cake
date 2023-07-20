@@ -79,8 +79,6 @@ ActiveRecord::Schema.define(version: 2023_07_19_054420) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-
-
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
