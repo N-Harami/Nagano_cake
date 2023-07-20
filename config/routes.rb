@@ -16,19 +16,25 @@ end
     get 'orders/complete'
   end
   namespace :public do
-    get 'cart_items/index'
+    get 'cart_items' => 'cart_items#index'
   end
 
   namespace :public do
-    get 'addresses' => 'addresses#index'
-    get 'addresses/edit'
+    resources :addresses, only: [:index, :edit, :destroy]
+    # get 'addresses' => 'addresses#index'
+    # get 'addresses/edit'
     post 'addresses' => 'addresses#create'
+    # get 'address/:id/edit' => 'addresses#edit', as: 'edit_address'
+    patch 'addresses/:id' => 'addresses#update', as: 'update_address'
   end
 
 
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
+  }
+  devise_for :admin, skip: [:registrations; :passwords], controllers: {
+    sessions: "admin/sessions"
   }
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

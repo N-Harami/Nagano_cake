@@ -21,6 +21,7 @@
 <%= address.address %>
 <p>宛名</p>
 <%= address.name %>
-
+<%= link_to "編集", edit_public_address_path(address) %>
+<%= link_to "削除", public_address_path(address), method: :delete %>
 <% end %>
 
