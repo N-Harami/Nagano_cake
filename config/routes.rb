@@ -16,6 +16,8 @@ end
     get 'orders/complete'
   end
   namespace :public do
+    resources :cart_items, only: [:destroy]
+    
     get 'cart_items' => 'cart_items#index'
     post 'cart_items' => 'cart_items#create'
     patch 'cart_items/:id' => 'cart_items#update'
