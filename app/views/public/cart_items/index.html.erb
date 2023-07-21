@@ -2,6 +2,30 @@
 <p>Find me in app/views/public/cart_items/index.html.erb</p>
 
 <%= 
+<table>
+  <thead>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>小計</th>
+  </thead>
+  <tbody>
+    <% @cart_itemes.each do |cart_item| %>
+    <tr>
+      <td><%= cart_item.item.name %></td>
+      <td><%= form_with model: @cart_item, url:public_cart_items_path(@cart_item.id) do |f| %>
 
-# セレクトボックス
-<%= f.select :amount, *[1..3 %>
+          <%= f.select :quantity, *[1..20] %>
+          <%= f.submit "更新" ,class:"btn btn-primary btn-xs" %>
+          
+      </td>
+      <td><%= (cart_item.item.tax_excluded_price * 1.1).floor %></td>
+      <td><%= (cart_item.item.tax_excluded_price * 1.1).floor * cart_item.quantity %></td>
+      <% @total_price += (cart_item.item.tax_excluded_price * 1.1).floor * cart_item.quantity %>
+    </tr>
+    <& end %>
+  </tbody>
+</table>
+
+
+
+<%= cart_item.quantity %>

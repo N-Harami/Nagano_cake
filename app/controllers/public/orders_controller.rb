@@ -6,6 +6,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @cart_item = CartItem current_user.cart_items.build(cart_item_params)
+    @cart_item.save
   end
 
   def confirm
