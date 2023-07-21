@@ -1,14 +1,5 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-  end
-=======
 
->>>>>>> origin/develop
   namespace :public do
   root to: "homes#top"
   get 'homes/about' => 'homes#about' ,as: "about"
@@ -41,23 +32,22 @@ end
   patch "/customers/withdraw" => "customers#withdraw"
   end
 
-    namespace :public do
-    resources :addresses, only: [:index, :edit, :destroy]
-    # get 'addresses' => 'addresses#index'
-    # get 'addresses/edit'
-    post 'addresses' => 'addresses#create'
-    # get 'address/:id/edit' => 'addresses#edit', as: 'edit_address'
-    patch 'addresses/:id' => 'addresses#update', as: 'update_address'
-<<<<<<< HEAD
+  namespace :public do
+  resources :addresses, only: [:index, :edit, :destroy]
+  # get 'addresses' => 'addresses#index'
+  # get 'addresses/edit'
+  post 'addresses' => 'addresses#create'
+  # get 'address/:id/edit' => 'addresses#edit', as: 'edit_address'
+  patch 'addresses/:id' => 'addresses#update', as: 'update_address'
   end
-  
+
   namespace :admin do
     resources :items
   end
 
-=======
-    end
->>>>>>> origin/develop
+  namespace :admin do
+    get 'homes/top' => 'homes#top', as: 'admin'
+  end
 
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",

@@ -3,11 +3,16 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
   end
 
   def show
   end
 
   def edit
+  end
+
+  def create
+    @item = Item.new(item_params)
   end
 end
