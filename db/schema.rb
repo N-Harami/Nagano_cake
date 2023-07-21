@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2023_07_19_054420) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -94,7 +95,7 @@ ActiveRecord::Schema.define(version: 2023_07_19_054420) do
     t.index ["name"], name: "index_items_on_name"
   end
 
-  create_table "orders", force: :cascade do |t|
+create_table "orders", force: :cascade do |t|
     t.integer "payment_methods"
     t.string "postcode", null: false
     t.string "address", null: false
