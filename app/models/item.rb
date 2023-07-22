@@ -1,6 +1,8 @@
 class Item < ApplicationRecord
-<<<<<<< HEAD
-=======
   has_one_attached :image
->>>>>>> origin/develop
+  has_many :order_details, dependent: :destroy
+  has_many :orders, through: order_details
+  has_many :customers, through: cart_items
+  has_many :cart_items, dependent: :destroy
+
 end

@@ -22,8 +22,8 @@
       <td><%= (cart_item.item.tax_excluded_price * 1.1).floor * cart_item.quantity %></td>
       <% @total_price += (cart_item.item.tax_excluded_price * 1.1).floor * cart_item.quantity %>
     </tr>
-    <%= link_to "削除", public_path(cart_item), method: :delete 
-    <& end %>
+    <%= link_to "削除", public_path(cart_item), method: :delete %>
+    <% end %>
   </tbody>
 </table>
 <%= link_to "カートを空にする", public_cart_items_destroy_all_path(@cart_items), method: :delete %>
