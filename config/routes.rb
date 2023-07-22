@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   namespace :admin do
     get 'items/index'
     get 'items/new'
     get 'items/show'
     get 'items/edit'
   end
-=======
 
->>>>>>> origin/develop
+
   namespace :public do
   root to: "homes#top"
   get 'homes/about' => 'homes#about' ,as: "about"
@@ -26,7 +24,13 @@ end
     get 'orders/complete'
   end
   namespace :public do
+
+    
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    delete 'cart_items/:id' => 'cart_items#destroy'
+
     resources :cart_items, only: [:destroy]
+
 
     get 'cart_items' => 'cart_items#index'
     post 'cart_items' => 'cart_items#create'
@@ -48,16 +52,16 @@ end
     post 'addresses' => 'addresses#create'
     # get 'address/:id/edit' => 'addresses#edit', as: 'edit_address'
     patch 'addresses/:id' => 'addresses#update', as: 'update_address'
-<<<<<<< HEAD
-  end
+
+end
   
   namespace :admin do
     resources :items
   end
 
-=======
-    end
->>>>>>> origin/develop
+
+    
+
 
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -68,4 +72,5 @@ end
   }
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+ 
  end
