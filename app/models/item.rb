@@ -1,6 +1,14 @@
 class Item < ApplicationRecord
-<<<<<<< HEAD
-=======
   has_one_attached :image
->>>>>>> origin/develop
+
+belongs_to :genre, optional: true
+
+with_options presence: true do
+  validates :name
+  validates :description
+  validates :tax_excluded_price
+  validates :image
+end
+
+validates :is_sale_status, inclusion: { in: [true,false] }
 end
