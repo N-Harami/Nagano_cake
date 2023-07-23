@@ -7,16 +7,6 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def show
-    @genre = Genre.find(params[:id])
-    @item = Item.find(params[:id])
-
-  end
-
-  def edit
-    @item = Item.find(params[:id])
-  end
-
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -25,6 +15,16 @@ class Admin::ItemsController < ApplicationController
       @items = Item.all
       render :new
     end
+  end
+
+  def show
+    @genre = Genre.find(params[:id])
+    @item = Item.find(params[:id])
+
+  end
+
+  def edit
+    @item = Item.find(params[:id])
   end
 
   def update
