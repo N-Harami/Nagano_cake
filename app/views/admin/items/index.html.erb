@@ -1,2 +1,34 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+<h1>商品一覧</h1>
+<table>
+  <thead>
+    <tr>
+      <th>商品画像</th>
+      <th>商品名</th>
+      <th>商品説明</th>
+      <th>単価</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+    <tr>
+      <td><%= image_tag item.image, size: "150x150" %></td>
+      <td><%= link_to item.name, admin_item_path(item.id) %></td>
+      <td><%= item.description %></td>
+      <td><%= item.tax_excluded_price %></td>
+      <td>
+        <p>
+          <i class="fas fa-box"></i>
+          <strong>
+            <% if item.is_sale_status %>
+              販売中
+            <% elsif %>
+              売切れ
+            <% end %>
+          </strong>
+        </p>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

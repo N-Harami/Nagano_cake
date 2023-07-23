@@ -1,2 +1,23 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<h2>商品名</h2>
+<%= @item.name %>
+<!--画像-->
+<%= image_tag @item.image, size: "300x300" %>
+
+<h2>商品説明</h2>
+<%= @item.description %>
+
+<h3>単価</h3>
+<%= @item.tax_excluded_price %>
+
+<p>
+  <i class="fas fa-box"></i>
+  <strong>
+    <% if @item.is_sale_status %>
+      販売中
+    <% elsif %>
+      売切れ
+    <% end %>
+  </strong>
+</p>
+
+<%= link_to '一覧', admin_items_path %> <%= link_to '編集', edit_admin_item_path(@item) %> <%= link_to '削除', admin_item_path(@item), method: :delete, "data-confirm" => "本当に削除しますか？" %>
