@@ -2,31 +2,28 @@
 <table>
   <thead>
     <tr>
-      <th>商品画像</th>
+      <th>商品ID</th>
       <th>商品名</th>
-      <th>商品説明</th>
-      <th>単価</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
       <th>ステータス</th>
     </tr>
   </thead>
   <tbody>
     <% @items.each do |item| %>
     <tr>
-      <td><%= image_tag item.image, size: "150x150" %></td>
+      <td><%= item.id %></td>
       <td><%= link_to item.name, admin_item_path(item.id) %></td>
-      <td><%= item.description %></td>
-      <td><%= item.tax_excluded_price %></td>
+      <td><%= item.tax_excluded_price.to_s(:delimited) %></td>
+      <td></td>
       <td>
-        <p>
-          <i class="fas fa-box"></i>
-          <strong>
-            <% if item.is_sale_status %>
-              販売中
-            <% elsif %>
-              売切れ
-            <% end %>
-          </strong>
-        </p>
+        <strong>
+          <% if item.is_sale_status %>
+            販売中
+          <% elsif %>
+            販売停止中
+          <% end %>
+        </strong>
       </td>
     </tr>
   <% end %>
