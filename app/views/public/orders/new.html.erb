@@ -1,2 +1,9 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<h1>注文入力画面</h1>
+
+
+<p>支払方法</p>
+<%= f.radio_button :payment_methods, ""
+
+お届け先
+
+<%= form_with model: @order, url:public_orders_new, method: :post do |f| %>

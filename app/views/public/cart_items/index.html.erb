@@ -1,7 +1,10 @@
 <h1>Public::CartItems#index</h1>
 <p>Find me in app/views/public/cart_items/index.html.erb</p>
+<% if @cart_items.count == 0 %>
+<p>noitem</p>
+<% end %>
 
-<%= 
+<% else %>
 <table>
   <thead>
     <th>商品名</th>
@@ -26,6 +29,8 @@
     <% end %>
   </tbody>
 </table>
+
+<% end %>
 <%= link_to "カートを空にする", public_cart_items_destroy_all_path(@cart_items), method: :delete %>
 
 
