@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_22_002013) do
+ActiveRecord::Schema.define(version: 2023_07_24_043935) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2023_07_22_002013) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id", null: false
   end
 
   create_table "admins", force: :cascade do |t|
@@ -75,7 +76,7 @@ ActiveRecord::Schema.define(version: 2023_07_22_002013) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "last_name", null: false
-    t.string "first_name", null: false
+    t.string "first_name"
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
     t.string "postcode", null: false
@@ -96,7 +97,6 @@ ActiveRecord::Schema.define(version: 2023_07_22_002013) do
     t.text "description", null: false
     t.integer "tax_excluded_price", null: false
     t.boolean "is_sale_status", default: true, null: false
-    t.integer "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_items_on_name"
