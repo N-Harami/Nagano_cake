@@ -19,4 +19,8 @@ end
 
 validates :is_sale_status, inclusion: { in: [true,false] }
 
+def add_tax_tax_excluded_price
+    (self.tax_excluded_price * 1.10).round
+end
+
 end
