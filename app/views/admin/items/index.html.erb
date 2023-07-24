@@ -15,7 +15,7 @@
       <td><%= item.id %></td>
       <td><%= link_to item.name, admin_item_path(item.id) %></td>
       <td><%= item.tax_excluded_price.to_s(:delimited) %></td>
-      <td></td>
+      <td><%= item.genre.name %></td>
       <td>
         <strong>
           <% if item.is_sale_status %>
