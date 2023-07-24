@@ -13,19 +13,21 @@
 <% end %>
 
 <p>お届け先</p>
+
+
 <%= form_with model: @order, url:public_orders_confirm_path, method: :post do |f| %>
 
 
-<%= f.radio_button :address_method, "cuurent_user_address" %>
-<%= f.label :address_method_address, "ご自身の住所" %>
+<%= f.radio_button :address_method, Order.address_methods.key(0) %>
+<%= f.label :address_method_address, Order.address_methods[:"ご自身の住所"] %>
 <%= current_user.address.postcode %>
 <%= current_user.address.address %>
 <%= current_user.address.name %>
 <% end %>
 
-
-<%= f.radio_button :address_method, "address" %>
-<%= f.label :address_method_address, "登録済み住所" %>
+  
+<%= f.radio_button :address_method, Order.address_methods.key(1) %>
+<%= f.label :address_method_address, Order.address_methods[:"登録済み住所"] %>
 
 
 <%= form_with model: @address, method: :post, url:public_orders_confirm_path do |f| %>
@@ -33,8 +35,8 @@
 <% end %>
 
 
-<%= f.radio_button :address_method, "new_address" %>
-<%= f.label :address_method_new_address, "新しいお届け先" %>
+<%= f.radio_button :address_method, Order.address_methods.key(2) %>
+<%= f.label :address_method_address, Order.address_methods[:"新しいお届け先"] %>
 
 <%= form_with model: @address, method: :post, url:public_orders_confirm_path do |f| %>
 <p>郵便番号</p>
@@ -45,4 +47,5 @@
 <%= f.text_field :name %>
 <%= f.submit '確認画面へ進む' %>
 
+<% end %>
 <% end %>
