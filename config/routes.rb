@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  scope module: :public do
   namespace :public do
   root to: "homes#top"
   get 'homes/about' => 'homes#about' ,as: "about"
