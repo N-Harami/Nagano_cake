@@ -1,11 +1,10 @@
- ja:
-    enums:
-      order:
-        payment_method:
-          credit_card: "クレジットカード"
-          transfer: "銀行振込"
-          
-activerecord:
+ja:
+  enums:
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+  activerecord:
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -22,7 +21,7 @@ activerecord:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -48,7 +47,7 @@ activerecord:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
