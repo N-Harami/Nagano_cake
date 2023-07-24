@@ -47,10 +47,6 @@ end
   patch 'addresses/:id' => 'addresses#update', as: 'update_address'
   end
 
-  namespace :admin do
-    resources :items
-  end
-
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -61,7 +57,7 @@ end
 
   namespace :admin do
     get 'homes/top'
-    resources :itemes, only: [:index, :new, :create, :show, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
