@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2023_07_22_002013) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "last_name", null: false
-    t.string "first_name"
+    t.string "first_name", null: false
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
     t.string "postcode", null: false
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 2023_07_22_002013) do
     t.text "description", null: false
     t.integer "tax_excluded_price", null: false
     t.boolean "is_sale_status", default: true, null: false
+    t.integer "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_items_on_name"
