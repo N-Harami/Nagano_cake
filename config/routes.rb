@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :public do
+  scope module: :public do
   root to: "homes#top"
   get 'homes/about' => 'homes#about' ,as: "about"
 end
@@ -18,7 +18,7 @@ end
   end
   namespace :public do
 
-    
+
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     delete 'cart_items/:id' => 'cart_items#destroy'
 
@@ -70,5 +70,5 @@ end
 
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
- 
+
  end

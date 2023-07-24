@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class Public::ItemsController < ApplicationController
   def index
     @items_all = Item.all
   end
