@@ -17,15 +17,15 @@
 
 <%= form_with model: @order, url:public_orders_confirm_path, method: :post do |f| %>
 
-
+  
 <%= f.radio_button :address_method, Order.address_methods.key(0) %>
 <%= f.label :address_method_address, Order.address_methods[:"ご自身の住所"] %>
-<%= current_user.address.postcode %>
-<%= current_user.address.address %>
-<%= current_user.address.name %>
-<% end %>
+<%= current_customer.postcode %>
+<%= current_customer.address %>
+<%= current_customer.name %>
 
-  
+
+
 <%= f.radio_button :address_method, Order.address_methods.key(1) %>
 <%= f.label :address_method_address, Order.address_methods[:"登録済み住所"] %>
 
