@@ -1,6 +1,6 @@
  <h2>商品一覧</h2>
  <% @items.each do |item|%>
- <%= link_to item_path(item) do%>
+ <%= link_to items_path(item) do%>
           <p class="img-wrap"><%= attachment_image_tag item, :image, width: "80%", format: "jpeg", fallback: "no_image.jpeg" %></p>
         <% end %>
         <%= item.name %></p>
