@@ -81,6 +81,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    customers_path
+    public_items_path
   end
 end
