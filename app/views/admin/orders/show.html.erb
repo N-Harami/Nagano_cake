@@ -1,0 +1,46 @@
+<% if @cart_items.count == 0 %>
+
+
+<p>noitem</p>
+<% end %>
+
+<% else %>
+<table>
+  <thead>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>小計</th>
+  </thead>
+  
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td><%= cart_item.item.name %></td>
+      
+     
+      <td><%= (cart_item.item.tax_excluded_price * 1.1).floor %></td>
+      <td><%= (cart_item.item.tax_excluded_price * 1.1).floor * cart_item.quantity %></td> 
+      
+      <%= cart_item.quantity %>
+     
+     
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="table-active" style="width:60%">商品</th>
+            <th class="table-active" style="width:20%">単価（税込み）</th>
+            <th class="table-active" style="width:10%">個数</th>
+            <th class="table-active" style="width:10%">小計</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @order.order_details.each do |order_detail| %>
+          <tr>
+            <td style="word-break:break-all"><%= order_detail.item.name %></td>
+            <td><%= order_detail.price_including_tax %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= order_detail.amount * order_detail.price_including_tax %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
