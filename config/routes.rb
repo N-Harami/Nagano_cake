@@ -33,7 +33,7 @@ end
   namespace :public do
   get 'customers/show' => 'customers#show' ,as: '/customers/mypage'
   get 'customers/edit' => 'customers#edit' , as: '/customers/information/edit'
-  get 'customers/update' => 'customers#update' , as: 'update_customer'
+  patch 'customers/update' => 'customers#update' , as: 'update_customer'
   get "/customers/check" => "customers#check"
   patch "/customers/withdraw" => "customers#withdraw"
   end
