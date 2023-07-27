@@ -7,8 +7,10 @@
       <h2><strong><%= @item.name %></strong></h2>
       <h4><%= simple_format(@item.description)%></h4>
 <!--カート機能-->
+<p><%= @item.name %></p>
+<div><%= image_tag @item.image %></div>
 
-<%= form_with model: @cart_item, url:public_cart_items_path(@cart_item.id) do |f| %>
+<%= form_with model: @cart_item, url:public_cart_items_path(@cart_item.id), method: :post do |f| %>
 
 <%= f.select :quantity, *[1..20] %>
 
