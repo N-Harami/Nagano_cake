@@ -6,9 +6,9 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.save
     redirect_to public_order_confirm_path
-  end 
-  
-  
+  end
+
+
 
   def index
     @address = Address.new
@@ -27,6 +27,6 @@ class Public::OrdersController < ApplicationController
   private
   def order_params
     prams.require(:order).permit(:address, :postcode, :name)
-  
+
 end
-end 
+end

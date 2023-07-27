@@ -25,8 +25,8 @@ class Public::AddressesController < ApplicationController
     address = Address.new(address_params)
     address.save
     redirect_to public_addresses_path
-    
-    
+
+
 
 
 
