@@ -13,9 +13,9 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-    redirect_to public_customers_mypage_path
+      redirect_to public_customers_mypage_path
     else
-    render "edit"
+      render "edit"
     end
   end
 
