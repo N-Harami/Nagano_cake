@@ -18,9 +18,11 @@ class Public::OrdersController < ApplicationController
         if order_detail.save
           @cart_items.destroy_all
         end
+      end 
      
     redirect_to public_order_complete_path
   end 
+end 
   
   
 
@@ -55,6 +57,7 @@ class Public::OrdersController < ApplicationController
     binding.pry
    end
   end 
+   
 
   def complete
   end
@@ -62,7 +65,7 @@ class Public::OrdersController < ApplicationController
   
   private
   def order_params
-    prams.require(:order).permit(:payment_method, :address, :postcode, :name)
+    params.require(:order).permit(:payment_method, :address, :postcode, :name)
   
   end
 

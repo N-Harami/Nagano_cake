@@ -1,12 +1,10 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
 
 
 <% if @cart_items.count == 0 %>
 
 
 <p>noitem</p>
-<% end %>
+
 
 <% else %>
 <table>
@@ -15,31 +13,37 @@
     <th>単価(税込)</th>
     <th>小計</th>
   </thead>
-  
+
   <tbody>
     <% @cart_items.each do |cart_item| %>
     <tr>
       <td><%= cart_item.item.name %></td>
-      
-     
+
+
       <td><%= (cart_item.item.tax_excluded_price * 1.1).floor %></td>
-      <td><%= (cart_item.item.tax_excluded_price * 1.1).floor * cart_item.quantity %></td> 
-      <td><%= form_with model: @cart_item, url:public_cart_items_path(@cart_item.id) do |f| %>
-      
+      <td><%= (cart_item.item.tax_excluded_price * 1.1).floor * cart_item.quantity %></td>
+      <td><%= form_with model: @cart_item, url:public_cart_items_path(@cart_item) do |f| %>
+
 
           <%= f.select :quantity, *[1..20] %>
           <%= f.submit "更新" ,class:"btn btn-primary btn-xs" %>
-          
+
       </td>
       <% @total_price += (cart_item.item.tax_excluded_price * 1.1).floor * cart_item.quantity %>
     </tr>
     <%= link_to "削除", public_path(cart_item), method: :delete %>
-    <% end %>
+
   </tbody>
 </table>
-
 <% end %>
+<% end %>
+<% end %>
+
+ 
+
 <%= link_to "カートを空にする", public_cart_items_destroy_all_path(@cart_items), method: :delete %>
-<%= link_to "確認画面へ", pubulic_orders_confirm_path %>
+<%= link_to "確認画面へ", public_orders_confirm_path %>
+
+
 
 
