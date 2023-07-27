@@ -31,11 +31,12 @@ end
   end
 
   namespace :public do
-  get 'customers/show' => 'customers#show' ,as: '/customers/mypage'
-  get 'customers/edit' => 'customers#edit' , as: '/customers/information/edit'
-  get 'customers/update' => 'customers#update' , as: 'update_customer'
+    resources :customers, only: [:update]
+  get 'customers/:id' => 'customers#show' ,as: '/customers/mypage'
+  get 'customers/:id/edit' => 'customers#edit' , as: '/customers/information/edit'
   get "/customers/check" => "customers#check"
   patch "/customers/withdraw" => "customers#withdraw"
+
   end
 
   namespace :public do
