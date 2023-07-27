@@ -1,5 +1,6 @@
 <% if customer_signed_in? %>
   <li class="nav-item">
+
     <%= link_to public_customers_mypage_path(current_user), class: 'nav-link' do %>
       マイページ
     <% end %>
