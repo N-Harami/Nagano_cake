@@ -186,3 +186,12 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+ja:
+  enums:
+    oder_details:
+      production_status:
+        inpossible: 着手不可
+        before: 製作待ち
+        doing: 製作中
+        completion: 製作完了

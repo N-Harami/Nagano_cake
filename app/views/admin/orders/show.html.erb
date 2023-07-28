@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <% if @cart_items.count == 0 %>
 
 
@@ -44,3 +45,50 @@
         <% end %>
         </tbody>
       </table>
+=======
+<h2>注文履歴詳細</h2>
+  <table>
+    <tbody>
+      <tr>
+        <th>購入者</th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>注文日</th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>配送先</th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>支払方法</th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>注文ステータス</th>
+        <th></th>
+    </tbody>
+  </table>
+  
+  <table>
+    <tbody>
+      <tr>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>製作ステータス</th>
+        <th></th>
+      <% @order.each do |order| %>
+        <tr>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>製作ステータス</th>
+        <th></th>
+      </tr>
+    </tbody>
+  </table>
+>>>>>>> origin/develop
