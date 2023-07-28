@@ -17,6 +17,10 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true
 
+  def active_for_authentication?
+    super && (is_quit_status == false)
+  end
+
   def update_without_current_password(params, *options)
     params.delete(:current_password)
 
