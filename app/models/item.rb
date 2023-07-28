@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   has_many :orders, through: :order_details
   has_many :customers, through: :cart_items
   has_many :cart_items, dependent: :destroy
+  has_many :order_details, dependent: :destroy
 
 
 
@@ -19,8 +20,8 @@ class Item < ApplicationRecord
   
   validates :is_sale_status, inclusion: { in: [true,false] }
   
-  def add_tax_tax_excluded_price
-      (self.tax_excluded_price * 1.10).round
+  def taxin_price
+        tax_excluded_price*1.1
   end
 
 end

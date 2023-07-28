@@ -11,10 +11,16 @@ end
 
   namespace :public do
     get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
+    get 'orders' => 'orders#index'
+    get 'orders/show/:id' => 'orders#show'
     get 'orders/confirm'
+    post 'orders/confirm'
     get 'orders/complete'
+    post 'orders' => 'orders#create'
+    
+    
+    
+    
   end
   namespace :public do
 
@@ -27,7 +33,7 @@ end
 
     get 'cart_items' => 'cart_items#index'
     post 'cart_items' => 'cart_items#create'
-    patch 'cart_items/:id' => 'cart_items#update'
+    patch 'cart_items/:id' => 'cart_items#update', as: 'update_cart_item'
   end
 
   namespace :public do
