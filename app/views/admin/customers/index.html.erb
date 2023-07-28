@@ -12,9 +12,9 @@
     <tbody>
       <tr>
         <th><%= customer.id %></th>
-        <th><%= customer.name %></th>
+        <th><%= customer.last_name %><%= customer.first_name %></th>
         <th><%= customer.email %></th>
-        <th><%= customer.is_quit_status %></th>
+        <th><%= customer.is_deleted %></th>
       </tr>
     </tbody>
   <% end %>
