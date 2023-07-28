@@ -1,6 +1,6 @@
 <h1>配送先一覧・登録</h1>
 
-<%= form_with model: @address, url:public_addresses_path do |f| %>　
+<%= form_with model: @address, url:public_addresses_path, method: :post do |f| %>　
 <h3>郵便番号</h3>
 <%= f.text_field :postcode %>
 <h3>住所</h3>
@@ -8,6 +8,7 @@
 <h3>宛名</h3>
 <%= f.text_field :name %>
 <%= f.submit "投稿" %>
+
 
 
 <% end %>

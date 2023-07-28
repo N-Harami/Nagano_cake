@@ -8,7 +8,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     @order.save
-<<<<<<< HEAD
       @cart_items = current_customer.cart_items.all
 
 
@@ -26,10 +25,6 @@ class Public::OrdersController < ApplicationController
      end
 
 
-=======
-    redirect_to public_order_confirm_path
-  end
->>>>>>> origin/develop
 
 
 
@@ -90,7 +85,6 @@ end
 
   private
   def order_params
-<<<<<<< HEAD
     params.require(:order).permit(:a_method, :payment_method, :address, :postcode, :name)
 
   end
@@ -98,9 +92,3 @@ end
 
 
 end
-=======
-    prams.require(:order).permit(:address, :postcode, :name)
-
-end
-end
->>>>>>> origin/develop
