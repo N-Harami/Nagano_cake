@@ -29,16 +29,9 @@ class Public::SessionsController < Devise::SessionsController
   # end
   def is_quit_status
     @customer = Customer.find_by(email: params[:customer][:email].downcase)
-<<<<<<< HEAD
-    return if !@customer
-    if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
-      flash[:notice] = "退会済みのためログインできません。"
-      redirect_to new_customer_session_path
-=======
       if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
         flash[:notice] = "退会済みのためログインできません。"
         redirect_to new_customer_registration_path
       end
->>>>>>> origin/develop
     end
   end

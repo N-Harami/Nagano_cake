@@ -3,26 +3,28 @@
     <tbody>
       <tr>
         <th>購入者</th>
-        <th></th>
+        <td><%= @order.customers.last_name %><%= @order.customers.first_name %></td>
       </tr>
       <tr>
         <th>注文日</th>
-        <th></th>
+        <td><%= @order.created_at %></td>
       </tr>
       <tr>
         <th>配送先</th>
-        <th></th>
+        <td><%= @order.customers.address %></td>
       </tr>
       <tr>
         <th>支払方法</th>
-        <th></th>
+        <td><%= @order.payment_methods %></td>
       </tr>
       <tr>
         <th>注文ステータス</th>
-        <th></th>
+        <td>
+          <%= select :order_status,:name,Order.order_statuses.keys.to_a %>
+          <%= select :order_status,:name,Order.order_statuses.values.to_a %>
+        </td>
     </tbody>
   </table>
-  
   <table>
     <tbody>
       <tr>
@@ -34,12 +36,11 @@
         <th></th>
       <% @order.each do |order| %>
         <tr>
-        <th>商品名</th>
-        <th>単価(税込)</th>
-        <th>数量</th>
-        <th>小計</th>
-        <th>製作ステータス</th>
-        <th></th>
-      </tr>
+          <td></td>
+          <td><%= order.items.name %></td>
+          <td><%= order.items.count %></td>
+          <td><%=  %></td>
+          <td><%= render partial: 'order_details/order_details', order: order, order_details: @order_details %></td>
+        </tr>
     </tbody>
   </table>

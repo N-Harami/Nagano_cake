@@ -16,7 +16,7 @@ class Customer < ApplicationRecord
   validates :postcode, presence: true
   validates :address, presence: true
   validates :phone_number, presence: true
-
+  validates :is_quit_status, inclusion: { in: [true,false] }
   def active_for_authentication?
     super && (is_quit_status == false)
   end

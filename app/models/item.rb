@@ -6,8 +6,6 @@ class Item < ApplicationRecord
   has_many :customers, through: :cart_items
   has_many :cart_items, dependent: :destroy
 
-
-
   belongs_to :genre, optional: true
   
   with_options presence: true do
