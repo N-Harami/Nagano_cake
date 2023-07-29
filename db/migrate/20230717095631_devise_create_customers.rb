@@ -20,6 +20,6 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.boolean "is_quit_status", default: false, null: false
       t.index ["email"], name: "index_customers_on_email", unique: true
       t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
-   end
+    end
   end
 end

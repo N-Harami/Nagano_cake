@@ -20,30 +20,31 @@
         <% end %>
       </table>
     </div>
-    <div class="col-lg-10 px-sm-0">
-      <h2>商品一覧(全<%= @items.count %>件)</h2>
-    </div>
-  </div>
-  <div class="row mt-3 mb-3 text-center text-xs-center text-sm-center text-md-left">
-    <div class="col-lg-10">
-    <div class="row">
-      <% @items.each do |item|%>
-        <div class="item_index col-3">
-          <%= link_to public_item_path(item) do%>
-            <%= image_tag item.get_image(150, 100) %>
-          <% end %>
 
-          <div>
-            <p><%= item.name %></p>
-            <% if item.is_sale_status == true %>
-              <p>￥<%= (item.tax_excluded_price * 1.1).to_i %></p>
-            <% else %>
-              <p>販売停止中</p>
+
+
+    <div class="col-log-10 px-sm-0">
+      <div>
+        <h2>商品一覧（全<%= @item_count %>）件</h2>
+      </div>
+      <div class="row">
+        <% @items.each do |item|%>
+          <div class="col-sm-2 offset-1">
+            <%= link_to public_item_path(item) do%>
+              <%= image_tag item.get_image(150, 100) %>
             <% end %>
+
+            <div>
+              <p><%= item.name %></p>
+              <% if item.is_sale_status == true %>
+                <p>￥<%= (item.tax_excluded_price * 1.1).to_i %></p>
+              <% else %>
+                <p>販売停止中</p>
+              <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
        <%= paginate @items, class:"text-center" %>
     </div>
   </div>
