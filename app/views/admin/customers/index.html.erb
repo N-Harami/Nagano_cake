@@ -18,7 +18,13 @@
           <% end %>
         </th>
         <th><%= customer.email %></th>
-        <th><%= customer.is_quit_status %></th>
+        <th>
+          <% if customer.is_quit_status == false %>
+            <strong class="text-success">有効</strong>
+          <% elsif customer.is_quit_status == true %>
+            <strong class="text-secondary">退会</strong>
+          <% end %>
+        </th>
       </tr>
     </tbody>
   <% end %>
