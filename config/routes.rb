@@ -1,63 +1,40 @@
 Rails.application.routes.draw do
 
   root "public/homes#top"
-  namespace :public do
-  get 'homes/about' => 'homes#about' ,as: "about"
-end
-
-  namespace :public do
-  resources :items ,only: [:index, :show]
-end
-
-  namespace :public do
-    get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
-    get 'orders/confirm'
-    get 'orders/complete'
-  end
-  namespace :public do
-
-
-    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
-    delete 'cart_items/:id' => 'cart_items#destroy'
-
-    resources :cart_items, only: [:destroy]
-
-
-    get 'cart_items' => 'cart_items#index'
-    post 'cart_items' => 'cart_items#create'
-    patch 'cart_items/:id' => 'cart_items#update'
-  end
-
-  namespace :public do
-  patch "/customers/withdraw" => "customers#withdraw"
-    resources :customers, only: [:update]
-  get "/customers/check" => "customers#check"
-  get 'customers/:id' => 'customers#show' ,as: '/customers/mypage'
-  get 'customers/:id/edit' => 'customers#edit' , as: '/customers/information/edit'
-
-  end
-
-  namespace :public do
-  resources :addresses, only: [:index, :edit, :destroy]
-  # get 'addresses' => 'addresses#index'
-  # get 'addresses/edit'
-  post 'addresses' => 'addresses#create'
-  # get 'address/:id/edit' => 'addresses#edit', as: 'edit_address'
-  patch 'addresses/:id' => 'addresses#update', as: 'update_address'
-  end
+  get '/about' => 'public/homes#about'
+  get '/admin' => 'admin/homes#top'
 
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+
+  namespace :public do
+    resources :items, only: [:index, :show]
+    get 'customers/check'
+    get 'customers/mypage', to: 'customers#show', as: 'mypage'
+    get 'customers/information/edit', to: 'customers#edit', as: 'edit_information'
+    patch 'customers/information', to: 'customers#update'
+    patch 'customers/withdraw', to: 'customers#withdraw'
+    resources :cart_items, only: [:create, :index, :update, :destroy] do
+      collection do
+        delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+      end
+    end
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        post '/orders/confirm' => 'orders#confirm', as: 'confirm'
+        get '/orders/complete' => 'orders#complete', as: 'complete'
+      end
+    end
+    resources :addresses, only: [:create, :index, :edit, :update, :destroy]
+  end
+
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
 
   namespace :admin do
-    get 'homes/top'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]

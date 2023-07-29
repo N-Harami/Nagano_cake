@@ -1,5 +1,4 @@
 <h2>商品詳細</h2>
-<!--画像-->
 <%= image_tag @item.image, size: "300x300" %>
 
 <table>
@@ -14,7 +13,7 @@
     </tr>
      <tr>
       <th>税込価格<br>(税抜価格)</th>
-      <td><%= @item.add_tax_tax_excluded_price.to_s(:delimited) %> (<%= @item.tax_excluded_price.to_s(:delimited) %>) 円</td>
+      <td><%= (@item.tax_excluded_price * 1.1).to_i %> (<%= @item.tax_excluded_price.to_s(:delimited) %>) 円</td>
     </tr>
      <tr>
       <th>ジャンル</th>
