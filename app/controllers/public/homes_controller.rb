@@ -1,9 +1,8 @@
-class HomesController < ApplicationController
+class Public::HomesController < ApplicationController
 
   def top
-  end
-
-  def about
+    @genres = Genre.order('id DESC').limit(8)
+    @items =  Item.order('id DESC').limit(4)
   end
 
 end

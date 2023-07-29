@@ -1,0 +1,31 @@
+<h2>会員一覧</h2>
+<table>
+  <tbody>
+    <tr>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+  </tbody>
+  <% @customers.each do |customer| %>
+    <tbody>
+      <tr>
+        <th><%= customer.id %></th>
+        <th>
+          <%= link_to admin_customer_path(customer) do %>
+            <%= customer.last_name %><%= customer.first_name %>
+          <% end %>
+        </th>
+        <th><%= customer.email %></th>
+        <th>
+          <% if customer.is_quit_status == false %>
+            <strong class="text-success">有効</strong>
+          <% elsif customer.is_quit_status == true %>
+            <strong class="text-secondary">退会</strong>
+          <% end %>
+        </th>
+      </tr>
+    </tbody>
+  <% end %>
+</table>

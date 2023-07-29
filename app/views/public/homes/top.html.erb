@@ -1,2 +1,43 @@
-<h1>Public#top</h1>
-<p>Find me in app/views/public/top.html.erb</p>
+<div class="row" style="margin-top: 5%">
+  <div class="col-sm-2 offset-1">
+    <table border="1" class="table">
+      <thead>
+        <tr align="center">
+          <th>ジャンル検索</th>
+        </tr>
+      </thead>
+      <% @genres.each do |f| %>
+        <tbody>
+          <tr>
+            <td><%= f.name %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+  <div class="col-sm-6">
+    <p>ようこそ、ながのCAKEへ！<br />
+    このサイトは、ケーキ販売のECサイトになります。<br />
+    会員でない方も商品の閲覧はできますが、<br />
+    購入には会員登録が必要になります。<br />
+    </p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-3 offset-3">
+    <h3>新着商品</h3>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row offset-3">
+  <% @items.each do |item| %>
+    <div class="col-sm-2 offset-1" id="new-item">
+      <p><%= link_to public_item_path(item) do %>
+      <%= image_tag item.get_image(150, 150)%>
+      <% end %></p>
+      <p><%= item.name %></p></p>
+      <p><%= (item.tax_excluded_price * 1.10).to_i %></p>
+    </div>
+  <% end %>
+  </div>
+</div>
