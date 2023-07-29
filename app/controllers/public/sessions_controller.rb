@@ -33,5 +33,5 @@ class Public::SessionsController < Devise::SessionsController
         flash[:notice] = "退会済みのためログインできません。"
         redirect_to new_customer_registration_path
       end
-    end
   end
+end
