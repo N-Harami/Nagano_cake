@@ -12,30 +12,28 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <h1 class="navbar-brand">LOGO</h1>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="row justify-content-end">
-            <div class="col-sm-12">
-              <% if customer_signed_in? %>
-                <%= "ようこそ、#{ current_customer.name } さん！" %>
-              <% end %>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div data-turbolinks="false">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container">
+            <h1 class="navbar-brand">LOGO</h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
-                <% if request.url&.include?('admin') %>
-                  <%= render partial: "layouts/admin_header" %>
-                <% else %>
-                  <%= render partial: "layouts/customer_header" %>
-                <% end %>
+                <li class="nav-item">
+                  <% if request.url&.include?('admin') %>
+                    <%= render partial: "layouts/admin_header" %>
+                  <% else %>
+                    <%= render partial: "layouts/customer_header" %>
+                  <% end %>
+                </li>
               </ul>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
     <main>
       <%= yield %>
