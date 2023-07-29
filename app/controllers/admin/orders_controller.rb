@@ -11,5 +11,10 @@ class Admin::OrdersController < ApplicationController
   def update
 
   end
-
+  
+  private
+  
+  def order_params
+    params.require(:order).permit(:cuttomer_id, :payment_methods, :postcode, :address, :name, :shipping_fee, :billing_amount, :order_status)
+  end
 end
