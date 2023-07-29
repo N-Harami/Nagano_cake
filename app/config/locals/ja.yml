@@ -1,0 +1,8 @@
+ja:
+  enums:
+    oder_details:
+      production_status:
+        inpossible: 着手不可
+        before: 製作待
+        doing: 製作中
+        completion: 製作完了

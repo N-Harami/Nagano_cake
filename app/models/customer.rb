@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :addresses, dependent: :destroy
   has_many :cart_items, dependent: :destroy
-  has_many :order, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   validates :email, presence: true
   validates :last_name, presence: true
@@ -21,17 +21,13 @@ class Customer < ApplicationRecord
     super && (is_quit_status == false)
   end
 
-  def update_without_current_password(params, *options)
-    params.delete(:current_password)
-
-    if params[:password].blank? && params[:password_confirmation].blank?
-      params.delete(:password)
-      params.delete(:password_confirmation)
-    end
-
-    result = update_attributes(params, *options)
-    clean_up_passwords
-    result
+  def name
+    last_name + first_name
   end
+
+  def name_kana
+    last_name_kana + first_name_kana
+  end
+
 end
 

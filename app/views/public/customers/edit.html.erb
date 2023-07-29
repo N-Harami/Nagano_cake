@@ -1,8 +1,8 @@
+<%= form_with model: current_customer, url:public_customers_information_path, method: :patch do |f| %>
 <div class="container">
   <div class="row my-3">
     <div class="col-sm-12 px-sm-0 offset-sm-1">
       <h2>会員情報編集</h2>
-      <%= form_with model: @customer, url:public_customer_path, method: :patch do |f| %>
     </div>
   </div>
   <div class="row">
@@ -46,5 +46,5 @@
         <%= link_to "退会する", public_customers_check_path, class:"btn btn-danger my-4 offset-sm-4"  %>
       </div>
     </div>
-  <% end %>
 </div>
+<% end %>

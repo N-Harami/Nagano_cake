@@ -12,7 +12,11 @@
     <tbody>
       <tr>
         <th><%= customer.id %></th>
-        <th><%= customer.name %></th>
+        <th>
+          <%= link_to admin_customer_path(customer) do %>
+            <%= customer.last_name %><%= customer.first_name %>
+          <% end %>
+        </th>
         <th><%= customer.email %></th>
         <th><%= customer.is_quit_status %></th>
       </tr>
